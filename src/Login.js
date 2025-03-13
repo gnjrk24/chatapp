@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Login = () => {
   return (
@@ -11,7 +11,7 @@ const Login = () => {
         <div>
           <input id="password" name="password" placeholder="password" />
         </div>
-        <button>Login</button>
+        <button type="submit">Login</button>
       </form>
     </React.Fragment>
   );
