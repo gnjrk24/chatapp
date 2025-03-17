@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import firebase from "./config/firebase";
-/*import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../config/firebase";*/
+import firebase from "../config/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -9,9 +9,10 @@ const SignUp = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    /*createUserWithEmailAndPassword(auth, email, password).catch((err) => {
+    console.log(email, password);
+    createUserWithEmailAndPassword(auth, email, password).catch((err) => {
       console.log(err);
-    });*/
+    });
   };
 
   return (
@@ -24,7 +25,7 @@ const SignUp = () => {
             id="email"
             placeholder="Email"
             value={email}
-            onchange={(e) => {
+            onChange={(e) => {
               setEmail(e.target.value);
               //console.log(e.target.vlue);
             }}
@@ -33,6 +34,7 @@ const SignUp = () => {
 
         <div>
           <input
+            type="password"
             name="password"
             id="password"
             placeholder="Password"
