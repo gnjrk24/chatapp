@@ -6,11 +6,12 @@ import { auth } from "../config/firebase";
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, password);
-    createUserWithEmailAndPassword(auth, email, password).catch((err) => {
+    createUserWithEmailAndPassword(auth, email, password, name).catch((err) => {
       console.log(err);
     });
   };
@@ -27,7 +28,6 @@ const SignUp = () => {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              //console.log(e.target.vlue);
             }}
           />
         </div>
@@ -46,7 +46,15 @@ const SignUp = () => {
         </div>
 
         <div>
-          <input name="name" id="name" placeholder="name" />
+          <input
+            name="name"
+            id="name"
+            value={name}
+            placeholder="name"
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
         </div>
         <button type="submit">Sign Up</button>
       </form>

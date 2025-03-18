@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import firebase from "./config/firebase";
 import { auth } from "./config/firebase";
 //user : ログイン済みのユーザーのオブジェクト
 
