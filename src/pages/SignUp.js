@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import firebase from "../config/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../config/firebase";
 
 const SignUp = () => {
@@ -11,9 +11,15 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, password);
-    createUserWithEmailAndPassword(auth, email, password, name).catch((err) => {
-      console.log(err);
-    });
+    createUserWithEmailAndPassword(auth, email, password)
+      .catch((err) => {
+        console.log(err);
+      })
+      .then(({ user }) => {
+        updateProfile(user, {
+          displayName: name,
+        });
+      });
   };
 
   return (
